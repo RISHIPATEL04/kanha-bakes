@@ -6,4 +6,5 @@
 //                          e.g. 'https://kanha-bakery-api.onrender.com'
 // ============================================================
 
-const API_BASE_URL = '';
+const API_BASE_URL = 'https://kanha-bakes.onrender.com';
+
