@@ -1,0 +1,274 @@
+/* Image Optimization and Loading States */
+
+/* Image Loading Placeholder */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    background-color: #f3f4f6;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Loading Animation */
+.menu-item-image::before,
+.story-image .image-placeholder::before,
+.location-image .image-placeholder::before,
+.member-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Image Fade-in Effect */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    opacity: 0;
+    animation: fadeInImage 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeInImage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Image Hover Effects */
+.menu-item:hover .menu-item-image {
+    transform: scale(1.05);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-image:hover .image-placeholder,
+.location-image:hover .image-placeholder {
+    transform: scale(1.02);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-member:hover .member-image {
+    transform: scale(1.1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image Overlay Effects */
+.menu-item-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(255, 215, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image::after {
+    opacity: 1;
+}
+
+/* Enhanced Image Quality */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: optimize-quality;
+    filter: brightness(1.05) contrast(1.05) saturate(1.1);
+    transition: filter 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image,
+.story-image:hover .image-placeholder,
+.location-image:hover .image-placeholder,
+.team-member:hover .member-image {
+    filter: brightness(1.1) contrast(1.1) saturate(1.2);
+}
+
+/* Background Image Optimization */
+.hero,
+.menu-hero,
+.about-hero,
+.contact-hero,
+.order-page,
+.login-container,
+.register-container,
+.navbar,
+.footer {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Responsive Image Sizing */
+@media (max-width: 768px) {
+    .menu-item-image {
+        height: 150px;
+    }
+    
+    .story-image .image-placeholder,
+    .location-image .image-placeholder {
+        height: 200px;
+    }
+    
+    .member-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Disable fixed attachment on mobile for performance */
+    .hero,
+    .menu-hero,
+    .about-hero,
+    .contact-hero,
+    .order-page,
+    .login-container,
+    .register-container,
+    .navbar,
+    .footer {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item-image {
+        height: 120px;
+    }
+    
+    .story-image .image-placeholder,
+    .location-image .image-placeholder {
+        height: 150px;
+    }
+    
+    .member-image {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* High DPI Display Optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .menu-item-image,
+    .story-image .image-placeholder,
+    .location-image .image-placeholder,
+    .member-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-quality;
+    }
+}
+
+/* Print Optimization */
+@media print {
+    .menu-item-image,
+    .story-image .image-placeholder,
+    .location-image .image-placeholder,
+    .member-image {
+        filter: none;
+        transform: none;
+    }
+    
+    .hero,
+    .menu-hero,
+    .about-hero,
+    .contact-hero,
+    .order-page,
+    .login-container,
+    .register-container {
+        background: none;
+        background-color: white;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .menu-item-image,
+    .story-image .image-placeholder,
+    .location-image .image-placeholder,
+    .member-image {
+        animation: none;
+    }
+    
+    .menu-item:hover .menu-item-image,
+    .story-image:hover .image-placeholder,
+    .location-image:hover .image-placeholder,
+    .team-member:hover .member-image {
+        transform: none;
+    }
+}
+
+/* Image Error Handling */
+.menu-item-image[data-error="true"],
+.story-image .image-placeholder[data-error="true"],
+.location-image .image-placeholder[data-error="true"],
+.member-image[data-error="true"] {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item-image[data-error="true"]::before,
+.story-image .image-placeholder[data-error="true"]::before,
+.location-image .image-placeholder[data-error="true"]::before,
+.member-image[data-error="true"]::before {
+    content: '🍰';
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+/* Image Performance Optimization */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Lazy Loading Support */
+.menu-item-image[data-loaded="false"],
+.story-image .image-placeholder[data-loaded="false"],
+.location-image .image-placeholder[data-loaded="false"],
+.member-image[data-loaded="false"] {
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+}
+
+/* Image Focus States for Accessibility */
+.menu-item:focus .menu-item-image,
+.story-image:focus .image-placeholder,
+.location-image:focus .image-placeholder,
+.member-image:focus {
+    outline: 2px solid #ff8c00;
+    outline-offset: 2px;
+}
+
+/* Enhanced Image Containers */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image,
+.story-image:hover .image-placeholder,
+.location-image:hover .image-placeholder,
+.team-member:hover .member-image {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}

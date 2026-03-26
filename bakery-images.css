@@ -1,0 +1,363 @@
+/* Bakery Images and Visual Elements */
+
+/* Hero Section Background Images */
+.hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 245, 245, 0.8), rgba(255, 251, 235, 0.8)),
+        url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 40%);
+    animation: floatPattern 20s ease-in-out infinite;
+}
+
+/* Menu Hero Background */
+.menu-hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.7), rgba(255, 107, 53, 0.6)),
+        url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=2089&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* About Hero Background */
+.about-hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.7), rgba(255, 107, 53, 0.6)),
+        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Contact Hero Background */
+.contact-hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.7), rgba(255, 107, 53, 0.6)),
+        url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2081&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Order Page Background */
+.order-page {
+    background: 
+        linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(255, 251, 235, 0.9)),
+        url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=2068&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Login Page Background */
+.login-container {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.3), rgba(255, 107, 53, 0.2)),
+        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Register Page Background */
+.register-container {
+    background: 
+        linear-gradient(45deg, rgba(255, 192, 203, 0.3), rgba(255, 140, 0, 0.2)),
+        url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2027&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Menu Item Images */
+.menu-item-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Chocolate Cake Image */
+.menu-item[data-category="cakes"]:nth-child(1) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Vanilla Cake Image */
+.menu-item[data-category="cakes"]:nth-child(2) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Lemon Cake Image */
+.menu-item[data-category="cakes"]:nth-child(3) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Red Velvet Cake Image */
+.menu-item[data-category="cakes"]:nth-child(4) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Chocolate Truffles Image */
+.menu-item[data-category="chocolates"]:nth-child(1) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Chocolate Bonbons Image */
+.menu-item[data-category="chocolates"]:nth-child(2) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1549007994-cb92caebd54b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Croissants Image */
+.menu-item[data-category="pastries"]:nth-child(1) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Cupcakes Image */
+.menu-item[data-category="pastries"]:nth-child(2) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Wedding Cake Image */
+.menu-item[data-category="custom"]:nth-child(1) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Birthday Cake Image */
+.menu-item[data-category="custom"]:nth-child(2) .menu-item-image {
+    background-image: url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');
+}
+
+/* Image Overlay Effects */
+.menu-item-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(255, 215, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image::before {
+    opacity: 1;
+}
+
+/* Shine Effect */
+.menu-item-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: slideShine 3s ease-in-out infinite;
+}
+
+/* About Page Images */
+.story-image .image-placeholder,
+.location-image .image-placeholder {
+    background: 
+        linear-gradient(135deg, #fff5f5, #fffbeb),
+        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80') center/cover no-repeat;
+    border-radius: 12px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.story-image .image-placeholder::before,
+.location-image .image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 140, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Team Member Images */
+.member-image {
+    background: 
+        linear-gradient(135deg, #fff5f5, #fffbeb),
+        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80') center/cover no-repeat;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    box-shadow: 0 8px 32px rgba(255, 140, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.member-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 140, 0, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.team-member:hover .member-image::before {
+    opacity: 1;
+}
+
+/* Enhanced Navigation Background */
+.navbar {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 235, 0.95)),
+        url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    backdrop-filter: blur(10px);
+}
+
+/* Enhanced Footer Background */
+.footer {
+    background: 
+        linear-gradient(135deg, #1f2937, #374151),
+        url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Form Background Images */
+.order-card,
+.delivery-info-card,
+.contact-form-container {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 235, 0.95)),
+        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80') center/cover no-repeat;
+    backdrop-filter: blur(5px);
+}
+
+/* Login/Register Card Backgrounds */
+.login-card,
+.register-card {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 235, 0.95)),
+        url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80') center/cover no-repeat;
+    backdrop-filter: blur(12px);
+}
+
+/* Responsive Background Adjustments */
+@media (max-width: 768px) {
+    .hero,
+    .menu-hero,
+    .about-hero,
+    .contact-hero,
+    .order-page,
+    .login-container,
+    .register-container {
+        background-attachment: scroll;
+    }
+    
+    .story-image .image-placeholder,
+    .location-image .image-placeholder {
+        height: 200px;
+    }
+    
+    .member-image {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item-image {
+        height: 150px;
+    }
+    
+    .story-image .image-placeholder,
+    .location-image .image-placeholder {
+        height: 150px;
+    }
+    
+    .member-image {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Image Loading States */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item-image::after,
+.story-image .image-placeholder::after,
+.location-image .image-placeholder::after,
+.member-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: slideShine 3s ease-in-out infinite;
+}
+
+/* Enhanced Image Hover Effects */
+.menu-item:hover .menu-item-image {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover .image-placeholder,
+.location-image:hover .image-placeholder {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-image {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Image Filters for Better Integration */
+.menu-item-image,
+.story-image .image-placeholder,
+.location-image .image-placeholder,
+.member-image {
+    filter: brightness(1.1) contrast(1.1) saturate(1.1);
+    transition: filter 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image,
+.story-image:hover .image-placeholder,
+.location-image:hover .image-placeholder,
+.team-member:hover .member-image {
+    filter: brightness(1.2) contrast(1.2) saturate(1.2);
+}

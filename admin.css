@@ -1,0 +1,150 @@
+.admin-page {
+    padding-top: 100px;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.admin-header {
+    background: white;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.export-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+}
+
+.export-btn:hover {
+    background: #059669;
+}
+
+.table-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+#ordersTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#ordersTable th,
+#ordersTable td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#ordersTable th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#ordersTable td {
+    color: #4b5563;
+    font-size: 0.95rem;
+    vertical-align: top;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-pending { background: #fef3c7; color: #92400e; }
+.status-confirmed { background: #dbeafe; color: #1e40af; }
+.status-in.progress { background: #e0e7ff; color: #3730a3; }
+.status-ready { background: #cffafe; color: #155e75; }
+.status-completed { background: #d1fae5; color: #065f46; }
+.status-cancelled { background: #fee2e2; color: #991b1b; }
+
+.status-select {
+    padding: 0.4rem 0.6rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: white;
+    color: #374151;
+    transition: border-color 0.2s;
+    min-width: 140px;
+}
+
+.status-select:hover {
+    border-color: #ff8c00;
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: #ff8c00;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.15);
+}
+
+.action-btn {
+    background: #ff8c00;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.action-btn:hover {
+    background: #e67e00;
+}
+
+.loading-state,
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Specific cell formatting */
+.customer-info strong, .order-details strong {
+    color: #1f2937;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.customer-info span, .order-details span {
+    display: block;
+    font-size: 0.85rem;
+    color: #6b7280;
+}

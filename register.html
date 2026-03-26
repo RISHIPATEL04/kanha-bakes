@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Khana cakes and Chocolates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="images/bakery-background.css">
+    <link rel="stylesheet" href="images/bakery-images.css">
+    <link rel="stylesheet" href="images/image-optimization.css">
+    <link rel="stylesheet" href="images/enhanced-styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register-content">
+            <!-- Bakery Brand Header -->
+            <div class="brand-header">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 100 100" class="icon-svg">
+                        <circle cx="50" cy="50" r="45" fill="#ec4899" stroke="#f43f5e" stroke-width="2" />
+                        <rect x="25" y="45" width="50" height="8" rx="4" fill="#ffd700" stroke="#daa520"
+                            stroke-width="1" />
+                        <circle cx="35" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="45" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="55" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="65" cy="49" r="1.5" fill="#8b4513" />
+                    </svg>
+                </div>
+                <h1 class="welcome-title">Join Our Sweet Family</h1>
+                <p class="welcome-subtitle">Create your account and start your baking journey</p>
+            </div>
+
+            <div class="register-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="sparkle-icon">✨</span>
+                        Create Account
+                        <span class="sparkle-icon">✨</span>
+                    </h2>
+                </div>
+
+                <div class="card-content">
+                    <form class="register-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span style="font-weight:400; color:#b07040;">(optional)</span></label>
+                            <input type="tel" id="phone" placeholder="e.g. 9876543210">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Delivery Address <span style="font-weight:400; color:#b07040;">(optional)</span></label>
+                            <input type="text" id="address" placeholder="Your default delivery address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Create a secure password (min 6 chars)" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        </div>
+
+                        <div class="benefits-section">
+                            <div class="benefits-header">
+                                <span class="heart-icon">♥</span>
+                                <p>Sweet Benefits of Joining:</p>
+                            </div>
+                            <ul class="benefits-list">
+                                <li>• Access to exclusive cake designs</li>
+                                <li>• Priority booking for special occasions</li>
+                                <li>• Personalized cake recommendations</li>
+                            </ul>
+                        </div>
+
+                        <button type="submit" class="register-btn" id="registerBtn">
+                            <span class="btn-icon">👤</span>
+                            Create My Sweet Account
+                        </button>
+                    </form>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                    <div class="footer-section">
+                        <p class="login-link">
+                            Already part of our bakery family?
+                            <a href="login.html">Sign in to your account</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">✨</div>
+                <h2>Welcome to the Family!</h2>
+                <p>Your account has been created. Let's explore our sweet collection!</p>
+            </div>
+            <button id="goToLogin" class="modal-btn">Go to Login</button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // ── Config ────────────────────────────────────────────
+        const API_URL = API_BASE_URL;
+
+        // ── Elements ──────────────────────────────────────────
+        const registerForm    = document.getElementById('registerForm');
+        const registerBtn     = document.getElementById('registerBtn');
+        const errorMessage    = document.getElementById('errorMessage');
+        const successModal    = document.getElementById('successModal');
+        const goToLogin       = document.getElementById('goToLogin');
+
+        // ── Helpers ───────────────────────────────────────────
+        function showError(msg) {
+            errorMessage.textContent = msg;
+            errorMessage.style.display = 'block';
+        }
+
+        function hideError() {
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+        }
+
+        function setLoading(loading) {
+            registerBtn.disabled = loading;
+            registerBtn.innerHTML = loading
+                ? '<span class="btn-icon">⏳</span> Creating Account...'
+                : '<span class="btn-icon">👤</span> Create My Sweet Account';
+        }
+
+        // ── Validate form ─────────────────────────────────────
+        function validate(name, email, password, confirmPassword) {
+            if (!name.trim())              return 'Please enter your full name.';
+            if (!email.trim())             return 'Please enter your email address.';
+            if (password.length < 6)       return 'Password must be at least 6 characters.';
+            if (password !== confirmPassword) return 'Passwords do not match.';
+            return null;
+        }
+
+        // ── Handle form submit ────────────────────────────────
+        registerForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            hideError();
+
+            const name            = document.getElementById('name').value.trim();
+            const email           = document.getElementById('email').value.trim();
+            const phone           = document.getElementById('phone').value.trim() || null;
+            const address         = document.getElementById('address').value.trim() || null;
+            const password        = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Client-side validation
+            const validationError = validate(name, email, password, confirmPassword);
+            if (validationError) {
+                showError(validationError);
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ name, email, password, phone, address })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showError(data.error || 'Registration failed. Please try again.');
+                    return;
+                }
+
+                // ✅ Success — show modal
+                successModal.style.display = 'flex';
+
+            } catch (err) {
+                showError('Cannot connect to server. Make sure the backend is running on port 3000.');
+                console.error('Register error:', err);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // ── Go to login after success ─────────────────────────
+        goToLogin.addEventListener('click', function () {
+            window.location.href = 'login.html';
+        });
+
+        // ── Auto-redirect if already logged in ───────────────
+        (async function checkSession() {
+            const token = localStorage.getItem('session_token');
+            if (!token) return;
+            try {
+                const res = await fetch(`${API_URL}/api/auth/me`, {
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    credentials: 'include'
+                });
+                if (res.ok) window.location.href = 'index.html';
+            } catch (_) {}
+        })();
+    </script>
+</body>
+
+</html>

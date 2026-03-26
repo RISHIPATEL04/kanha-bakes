@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Kanha Cakes and Chocolates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <circle cx="50" cy="50" r="45" fill="#ff8c00" stroke="#ff6b35" stroke-width="2" />
+                        <rect x="25" y="45" width="50" height="8" rx="4" fill="#ffd700" stroke="#daa520"
+                            stroke-width="1" />
+                        <circle cx="35" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="45" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="55" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="65" cy="49" r="1.5" fill="#8b4513" />
+                    </svg>
+                    <span class="logo-text">Kanha Cakes</span>
+                </a>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="order.html" class="nav-link">Order</a>
+                <div id="authSection"></div>
+            </div>
+
+            <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+        </div>
+    </nav>
+
+    <main class="profile-page">
+        <section class="profile-section">
+            <div class="container">
+                <h1 class="page-title">My Profile</h1>
+                
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <h2>Personal Details</h2>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label for="profileName">Name</label>
+                                <input type="text" id="profileName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email (Cannot be changed)</label>
+                                <input type="email" id="profileEmail" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePhone">Phone Number</label>
+                                <input type="tel" id="profilePhone" placeholder="+91 9876543210">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileAddress">Delivery Address</label>
+                                <textarea id="profileAddress" rows="3" placeholder="Apartment, Street, City..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
+                        </form>
+                        <div id="profileMessage" class="message hidden"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="client-auth.js"></script>
+    <script src="navigation.js"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+/* Bakery Background Images and Themes */
+
+/* Hero Background with Cake Pattern */
+.hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 245, 245, 0.95), rgba(255, 251, 235, 0.95)),
+        radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cake" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ff8c00" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23cake)"/></svg>');
+    background-size: cover, cover, cover, 20px 20px;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 40%);
+    animation: floatPattern 20s ease-in-out infinite;
+}
+
+@keyframes floatPattern {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Menu Hero Background */
+.menu-hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.8), rgba(255, 107, 53, 0.6)),
+        linear-gradient(45deg, rgba(255, 245, 245, 0.9), rgba(255, 251, 235, 0.9)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="sprinkles" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="7.5" cy="7.5" r="1" fill="%23ffd700" opacity="0.3"/><circle cx="3" cy="12" r="0.8" fill="%23ff6b35" opacity="0.3"/><circle cx="12" cy="3" r="0.8" fill="%23ff8c00" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23sprinkles)"/></svg>');
+    background-size: cover, cover, 15px 15px;
+}
+
+/* About Hero Background */
+.about-hero, .contact-hero {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.8), rgba(255, 107, 53, 0.6)),
+        linear-gradient(45deg, rgba(255, 245, 245, 0.9), rgba(255, 251, 235, 0.9)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M12.5 5c-2 0-4 2-4 4.5 0 3 4 6 4 6s4-3 4-6c0-2.5-2-4.5-4-4.5z" fill="%23ff69b4" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+    background-size: cover, cover, 25px 25px;
+}
+
+/* Order Page Background */
+.order-page {
+    background: 
+        linear-gradient(135deg, rgba(248, 250, 252, 0.95), rgba(255, 251, 235, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cookies" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="6" fill="%23d2691e" opacity="0.05"/><circle cx="15" cy="15" r="3" fill="%23ff8c00" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23cookies)"/></svg>');
+    background-size: cover, 30px 30px;
+    background-attachment: fixed;
+}
+
+/* Login Page Enhanced Background */
+.login-container {
+    background: 
+        linear-gradient(135deg, rgba(255, 140, 0, 0.3), rgba(255, 107, 53, 0.2)),
+        linear-gradient(45deg, rgba(255, 245, 245, 0.95), rgba(255, 251, 235, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><polygon points="20,5 25,15 35,15 27,22 30,32 20,27 10,32 13,22 5,15 15,15" fill="%23ffd700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    background-size: cover, cover, 40px 40px;
+    background-attachment: fixed;
+}
+
+/* Register Page Enhanced Background */
+.register-container {
+    background: 
+        linear-gradient(45deg, rgba(255, 192, 203, 0.3), rgba(255, 140, 0, 0.2)),
+        linear-gradient(135deg, rgba(255, 240, 246, 0.95), rgba(255, 251, 235, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="flowers" x="0" y="0" width="35" height="35" patternUnits="userSpaceOnUse"><circle cx="17.5" cy="17.5" r="8" fill="%23ff69b4" opacity="0.05"/><circle cx="17.5" cy="17.5" r="4" fill="%23ffd700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23flowers)"/></svg>');
+    background-size: cover, cover, 35px 35px;
+    background-attachment: fixed;
+}
+
+/* Enhanced Menu Items with Better Visual Appeal */
+.menu-item-image {
+    background: 
+        linear-gradient(135deg, #fff5f5, #fffbeb),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="%23ff8c00" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    background-size: cover, 10px 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 140, 0, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Enhanced Feature Cards */
+.feature-card {
+    background: 
+        linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(255, 255, 255, 0.9)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10 Q5 0 10 10 T20 10" stroke="%23ff8c00" stroke-width="1" fill="none" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+    background-size: cover, 20px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.05) 0%, transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Testimonials */
+.testimonials {
+    background: 
+        linear-gradient(135deg, rgba(255, 245, 245, 0.9), rgba(255, 251, 235, 0.9)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="quotes" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><text x="25" y="30" font-family="serif" font-size="20" fill="%23ff8c00" opacity="0.1" text-anchor="middle">"</text></pattern></defs><rect width="100" height="100" fill="url(%23quotes)"/></svg>');
+    background-size: cover, 50px 50px;
+}
+
+/* Enhanced Footer */
+.footer {
+    background: 
+        linear-gradient(135deg, #1f2937, #374151),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="night" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="1" fill="%23ffd700" opacity="0.2"/><circle cx="10" cy="50" r="0.8" fill="%23ff8c00" opacity="0.2"/><circle cx="50" cy="10" r="0.8" fill="%23ff6b35" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23night)"/></svg>');
+    background-size: cover, 60px 60px;
+}
+
+/* Enhanced Navigation */
+.navbar {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 235, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="nav" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><circle cx="40" cy="40" r="2" fill="%23ff8c00" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23nav)"/></svg>');
+    background-size: cover, 80px 80px;
+    backdrop-filter: blur(10px);
+}
+
+/* Enhanced Cards and Forms */
+.order-card, .delivery-info-card, .contact-form-container {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 235, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="form" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><rect x="12.5" y="12.5" width="1" height="1" fill="%23ff8c00" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23form)"/></svg>');
+    background-size: cover, 25px 25px;
+    backdrop-filter: blur(5px);
+}
+
+/* Enhanced Login/Register Cards */
+.login-card, .register-card {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 235, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="auth" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="3" fill="%23ffd700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23auth)"/></svg>');
+    background-size: cover, 30px 30px;
+    backdrop-filter: blur(12px);
+}
+
+/* Responsive Background Adjustments */
+@media (max-width: 768px) {
+    .hero, .menu-hero, .about-hero, .contact-hero {
+        background-attachment: scroll;
+    }
+    
+    .login-container, .register-container, .order-page {
+        background-attachment: scroll;
+    }
+}

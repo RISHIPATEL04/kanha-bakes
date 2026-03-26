@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Kanha Cakes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">Kanha Bakery Admin</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Main Site</a>
+                <div id="authSection"></div>
+            </div>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+        </div>
+    </nav>
+
+    <main class="admin-page">
+        <section class="admin-header">
+            <div class="container header-flex">
+                <h1 class="page-title">Order Management</h1>
+                <button id="exportCsvBtn" class="export-btn">📥 Export to CSV / Excel</button>
+            </div>
+        </section>
+
+        <section class="admin-table-section">
+            <div class="container">
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date Placed</th>
+                                    <th>Customer Info</th>
+                                    <th>Order Details</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Orders injected here via JS -->
+                            </tbody>
+                        </table>
+                        <div id="loadingMessage" class="loading-state">Loading orders...</div>
+                        <div id="emptyMessage" class="empty-state hidden">No orders found.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="client-auth.js"></script>
+    <script src="navigation.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

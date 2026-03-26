@@ -1,0 +1,6 @@
+node_modules/
+netlify-upload/
+admin penle/
+backend/
+.env
+*.log

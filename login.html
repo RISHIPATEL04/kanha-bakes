@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Khana cakes and Chocolates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="images/bakery-background.css">
+    <link rel="stylesheet" href="images/bakery-images.css">
+    <link rel="stylesheet" href="images/image-optimization.css">
+    <link rel="stylesheet" href="images/enhanced-styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-content">
+            <!-- Bakery Brand Header -->
+            <div class="brand-header">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 100 100" class="icon-svg">
+                        <circle cx="50" cy="50" r="45" fill="#ff8c00" stroke="#ff6b35" stroke-width="2" />
+                        <rect x="25" y="45" width="50" height="8" rx="4" fill="#ffd700" stroke="#daa520"
+                            stroke-width="1" />
+                        <circle cx="35" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="45" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="55" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="65" cy="49" r="1.5" fill="#8b4513" />
+                    </svg>
+                </div>
+                <h1 class="welcome-title">Welcome Back</h1>
+                <p class="welcome-subtitle">Sign in to your sweet account</p>
+            </div>
+
+            <div class="login-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="heart-icon">♥</span>
+                        Login
+                        <span class="heart-icon">♥</span>
+                    </h2>
+                </div>
+
+                <div class="card-content">
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <button type="submit" class="login-btn" id="loginBtn">Sign Into My Account</button>
+                    </form>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                    <div class="footer-section">
+                        <p class="register-link">
+                            New to our bakery?
+                            <a href="register.html">Create your sweet account</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">♥</div>
+                <h2>Welcome Back!</h2>
+                <p>You're successfully logged in. Let's bake some memories!</p>
+            </div>
+            <button id="enterBakery" class="modal-btn">Enter Bakery</button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // ── Config ────────────────────────────────────────────
+        const API_URL = API_BASE_URL;
+
+        // ── Elements ──────────────────────────────────────────
+        const loginForm    = document.getElementById('loginForm');
+        const loginBtn     = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const successModal = document.getElementById('successModal');
+        const enterBakery  = document.getElementById('enterBakery');
+
+        // ── Show / hide error ─────────────────────────────────
+        function showError(msg) {
+            errorMessage.textContent = msg;
+            errorMessage.style.display = 'block';
+        }
+
+        function hideError() {
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+        }
+
+        // ── Set button loading state ──────────────────────────
+        function setLoading(loading) {
+            loginBtn.disabled = loading;
+            loginBtn.textContent = loading ? 'Signing in...' : 'Sign Into My Account';
+        }
+
+        // ── Handle form submit ────────────────────────────────
+        loginForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            hideError();
+
+            const email    = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                showError('Please enter your email and password.');
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',        // send/receive cookies
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    // Server returned an error (401, 400, etc.)
+                    showError(data.error || 'Login failed. Please try again.');
+                    return;
+                }
+
+                // ✅ Success — save token & user info
+                localStorage.setItem('session_token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+
+                // Show success modal
+                successModal.style.display = 'flex';
+
+            } catch (err) {
+                // Network error — backend not running?
+                showError('Cannot connect to server. Make sure the backend is running on port 3000.');
+                console.error('Login error:', err);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // ── Enter Bakery button ───────────────────────────────
+        enterBakery.addEventListener('click', function () {
+            // Redirect to your main page after login
+            window.location.href = 'index.html';
+        });
+
+        // ── Auto-redirect if already logged in ───────────────
+        (async function checkSession() {
+            const token = localStorage.getItem('session_token');
+            if (!token) return;
+
+            try {
+                const res = await fetch(`${API_URL}/api/auth/me`, {
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    credentials: 'include'
+                });
+                if (res.ok) {
+                    // Already logged in — skip login page
+                    window.location.href = 'index.html';
+                }
+            } catch (_) {
+                // Server offline — stay on login page
+            }
+        })();
+    </script>
+</body>
+
+</html>

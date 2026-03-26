@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Khana cakes and Chocolates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="images/bakery-background.css">
+    <link rel="stylesheet" href="images/menu-visuals.css">
+    <link rel="stylesheet" href="images/bakery-images.css">
+    <link rel="stylesheet" href="images/image-optimization.css">
+    <link rel="stylesheet" href="images/enhanced-styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <circle cx="50" cy="50" r="45" fill="#ff8c00" stroke="#ff6b35" stroke-width="2" />
+                        <rect x="25" y="45" width="50" height="8" rx="4" fill="#ffd700" stroke="#daa520"
+                            stroke-width="1" />
+                        <circle cx="35" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="45" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="55" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="65" cy="49" r="1.5" fill="#8b4513" />
+                    </svg>
+                    <span class="logo-text">Khana cakes and Chocolates</span>
+                </a>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="menu.html" class="nav-link active">Menu</a>
+                <a href="order.html" class="nav-link">Order</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div id="authSection"></div>
+            </div>
+
+            <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+        </div>
+    </nav>
+
+    <main class="menu-page">
+        <!-- Hero Section -->
+        <section class="menu-hero">
+            <div class="hero-overlay">
+                <div class="container">
+                    <h1 class="menu-hero-title">Our Delicious Menu</h1>
+                    <p class="menu-hero-subtitle">Handcrafted cakes and treats made with the finest ingredients</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Categories -->
+        <section class="menu-categories">
+            <div class="container">
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All Items</button>
+                    <button class="filter-btn" data-category="cakes">Cakes</button>
+                    <button class="filter-btn" data-category="chocolates">Chocolates</button>
+                    <button class="filter-btn" data-category="pastries">Pastries</button>
+                    <button class="filter-btn" data-category="custom">Custom Orders</button>
+                </div>
+
+                <!-- Menu Items Grid -->
+                <div class="menu-grid" id="menuGrid">
+                    <!-- Cake Items -->
+                    <div class="menu-item" data-category="cakes">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Decadent Chocolate Cake</h3>
+                            <p class="item-description">Rich, moist chocolate cake with premium cocoa and chocolate
+                                ganache</p>
+                            <div class="item-details">
+                                <span class="item-price">Starting at ₹800/kg</span>
+                                <button class="order-btn" data-item="chocolate">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="cakes">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Classic Vanilla Dream</h3>
+                            <p class="item-description">Light and fluffy vanilla sponge with vanilla buttercream
+                                frosting</p>
+                            <div class="item-details">
+                                <span class="item-price">Starting at ₹700/kg</span>
+                                <button class="order-btn" data-item="vanilla">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="cakes">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Zesty Lemon Drizzle</h3>
+                            <p class="item-description">Fresh lemon cake with tangy lemon glaze and cream cheese
+                                frosting</p>
+                            <div class="item-details">
+                                <span class="item-price">Starting at ₹750/kg</span>
+                                <button class="order-btn" data-item="lemon">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="cakes">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Red Velvet Delight</h3>
+                            <p class="item-description">Classic red velvet with cream cheese frosting and elegant finish
+                            </p>
+                            <div class="item-details">
+                                <span class="item-price">Starting at ₹850/kg</span>
+                                <button class="order-btn" data-item="velvet">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chocolate Items -->
+                    <div class="menu-item" data-category="chocolates">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Artisan Chocolate Truffles</h3>
+                            <p class="item-description">Handcrafted truffles with premium Belgian chocolate</p>
+                            <div class="item-details">
+                                <span class="item-price">₹50 per piece</span>
+                                <button class="order-btn" data-item="truffles">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="chocolates">
+                        <div class="menu-item-image">
+                            <div class="placeholder-image">🍬</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Chocolate Bonbons</h3>
+                            <p class="item-description">Assorted flavored bonbons with unique fillings</p>
+                            <div class="item-details">
+                                <span class="item-price">₹40 per piece</span>
+                                <button class="order-btn" data-item="bonbons">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pastry Items -->
+                    <div class="menu-item" data-category="pastries">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Fresh Croissants</h3>
+                            <p class="item-description">Buttery, flaky croissants baked fresh daily</p>
+                            <div class="item-details">
+                                <span class="item-price">₹80 per piece</span>
+                                <button class="order-btn" data-item="croissants">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="pastries">
+                        <div class="menu-item-image">
+                            <div class="placeholder-image">🧁</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Gourmet Cupcakes</h3>
+                            <p class="item-description">Individual cupcakes with creative flavors and decorations</p>
+                            <div class="item-details">
+                                <span class="item-price">₹120 per piece</span>
+                                <button class="order-btn" data-item="cupcakes">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Orders -->
+                    <div class="menu-item" data-category="custom">
+                        <div class="menu-item-image">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Wedding Cakes</h3>
+                            <p class="item-description">Multi-tier custom wedding cakes designed for your special day
+                            </p>
+                            <div class="item-details">
+                                <span class="item-price">Starting at ₹2000</span>
+                                <button class="order-btn" data-item="wedding">Contact Us</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="custom">
+                        <div class="menu-item-image">
+                            <div class="placeholder-image">🎉</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="item-name">Birthday Special</h3>
+                            <p class="item-description">Customized birthday cakes with personalized themes and messages
+                            </p>
+                            <div class="item-details">
+                                <span class="item-price">Starting at ₹1200</span>
+                                <button class="order-btn" data-item="birthday">Contact Us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Notice -->
+                <div class="special-notice">
+                    <div class="notice-content">
+                        <h3>📞 Custom Orders Welcome!</h3>
+                        <p>We specialize in creating custom cakes for all occasions. Contact us to discuss your unique
+                            requirements and get a personalized quote.</p>
+                        <a href="contact.html" class="contact-btn">Get Custom Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="client-auth.js"></script>
+    <script src="navigation.js"></script>
+    <script src="menu.js"></script>
+</body>
+
+</html>

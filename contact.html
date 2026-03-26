@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Khana Cakes and Chocolates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="images/bakery-background.css">
+    <link rel="stylesheet" href="images/bakery-images.css">
+    <link rel="stylesheet" href="images/image-optimization.css">
+    <link rel="stylesheet" href="images/enhanced-styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <circle cx="50" cy="50" r="45" fill="#ff8c00" stroke="#ff6b35" stroke-width="2" />
+                        <rect x="25" y="45" width="50" height="8" rx="4" fill="#ffd700" stroke="#daa520"
+                            stroke-width="1" />
+                        <circle cx="35" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="45" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="55" cy="49" r="1.5" fill="#8b4513" />
+                        <circle cx="65" cy="49" r="1.5" fill="#8b4513" />
+                    </svg>
+                    <span class="logo-text">Khana Cakes and Chocolates</span>
+                </a>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="order.html" class="nav-link">Order</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <div id="authSection"></div>
+            </div>
+
+            <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+        </div>
+    </nav>
+
+    <main class="contact-page">
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="hero-overlay">
+                <div class="container">
+                    <h1 class="contact-hero-title">Get In Touch</h1>
+                    <p class="contact-hero-subtitle">We'd love to hear from you and help with your special orders</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <h2>Send us a Message</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="contactName">Your Name</label>
+                                <input type="text" id="contactName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactEmail">Email</label>
+                                <input type="email" id="contactEmail" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactPhone">Phone Number</label>
+                                <input type="tel" id="contactPhone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <select id="contactSubject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="custom-order">Custom Order Inquiry</option>
+                                    <option value="general">General Question</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="5" required
+                                    placeholder="Tell us about your requirements or questions..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <div class="info-details">
+                                <h3>Address</h3>
+                                <p>16, Shantinagar near ITI road<br>Tarsali, Vadodara<br>Gujarat 390009</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">📞</div>
+                            <div class="info-details">
+                                <h3>Phone</h3>
+                                <p>+91 9876543210</p>
+                                <p>+91 9876543211</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">✉️</div>
+                            <div class="info-details">
+                                <h3>Email</h3>
+                                <p>orders@khanabakes.com</p>
+                                <p>info@khanabakes.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">🕒</div>
+                            <div class="info-details">
+                                <h3>Business Hours</h3>
+                                <p>Monday - Sunday</p>
+                                <p>10:00 AM - 11:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">🚚</div>
+                            <div class="info-details">
+                                <h3>Delivery</h3>
+                                <p>Pickup only from our shop</p>
+                                <p>Home delivery via porter apps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>How far in advance should I place my order?</h3>
+                        <p>We recommend placing your order at least 24 hours in advance to ensure we have enough time to
+                            prepare your custom cake or treats.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do you offer home delivery?</h3>
+                        <p>We don't provide direct home delivery, but you can use porter applications like Swiggy Genie,
+                            Dunzo, or other local delivery services to get your orders delivered.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What payment methods do you accept?</h3>
+                        <p>We accept cash, credit cards, debit cards, UPI, and other digital payment methods. A 50%
+                            advance payment is required to confirm your order.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can you accommodate dietary restrictions?</h3>
+                        <p>Yes, we can accommodate various dietary requirements. Please mention any allergies or dietary
+                            restrictions when placing your order.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if I need to cancel my order?</h3>
+                        <p>Orders can be cancelled up to 12 hours before pickup time for a full refund. Cancellations
+                            within 12 hours are not eligible for refunds.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do you make custom designs?</h3>
+                        <p>Absolutely! We specialize in custom cakes for birthdays, weddings, anniversaries, and other
+                            special occasions. Contact us to discuss your specific requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="config.js"></script>
+    <script src="client-auth.js"></script>
+    <script src="navigation.js"></script>
+    <script src="about.js"></script>
+</body>
+
+</html>

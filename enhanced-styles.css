@@ -1,0 +1,412 @@
+/* Enhanced Styles for All Pages */
+
+/* Enhanced Typography */
+.hero-title, .menu-hero-title, .about-hero-title, .contact-hero-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.hero-title::before,
+.menu-hero-title::before,
+.about-hero-title::before,
+.contact-hero-title::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent, rgba(255, 140, 0, 0.1), transparent);
+    border-radius: 10px;
+    z-index: -1;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Enhanced Buttons */
+.btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced Cards */
+.order-card,
+.delivery-info-card,
+.contact-form-container,
+.info-card,
+.faq-item,
+.feature-card,
+.testimonial-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.order-card::before,
+.delivery-info-card::before,
+.contact-form-container::before,
+.info-card::before,
+.faq-item::before,
+.feature-card::before,
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.05), transparent, rgba(255, 215, 0, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.order-card:hover::before,
+.delivery-info-card:hover::before,
+.contact-form-container:hover::before,
+.info-card:hover::before,
+.faq-item:hover::before,
+.feature-card:hover::before,
+.testimonial-card:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Forms */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 140, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: #ff8c00;
+    box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    display: block;
+    position: relative;
+}
+
+.form-group label::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff8c00;
+    transition: width 0.3s ease;
+}
+
+.form-group input:focus + label::after,
+.form-group select:focus + label::after,
+.form-group textarea:focus + label::after {
+    width: 100%;
+}
+
+/* Enhanced Navigation */
+.navbar {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(255, 140, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(255, 215, 0, 0.1));
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    opacity: 1;
+}
+
+/* Enhanced Footer */
+.footer {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), transparent, rgba(255, 215, 0, 0.1));
+    opacity: 0.3;
+}
+
+.footer-section {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to elements */
+.hero-content {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.hero-image {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.feature-card {
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.testimonial-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.menu-item {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+/* Enhanced Loading States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Enhanced Hover Effects */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+}
+
+.hover-scale {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced Shadows */
+.shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-medium {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-large {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-colored {
+    box-shadow: 0 10px 25px -5px rgba(255, 140, 0, 0.3);
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    .hero-title,
+    .menu-hero-title,
+    .about-hero-title,
+    .contact-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .feature-card,
+    .testimonial-card,
+    .menu-item {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title,
+    .menu-hero-title,
+    .about-hero-title,
+    .contact-hero-title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .order-card,
+    .delivery-info-card,
+    .contact-form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Enhanced Focus States */
+*:focus {
+    outline: 2px solid #ff8c00;
+    outline-offset: 2px;
+}
+
+.btn:focus,
+.nav-link:focus {
+    outline: 2px solid #ff8c00;
+    outline-offset: 2px;
+}
+
+/* Enhanced Print Styles */
+@media print {
+    .navbar,
+    .footer,
+    .btn,
+    .floating-elements {
+        display: none;
+    }
+    
+    .hero,
+    .menu-hero,
+    .about-hero,
+    .contact-hero {
+        background: none;
+        color: black;
+    }
+    
+    .order-card,
+    .delivery-info-card,
+    .contact-form-container {
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}

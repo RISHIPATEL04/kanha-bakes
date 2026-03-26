@@ -1,0 +1,233 @@
+/* Menu Item Visual Elements */
+
+.cake-visual {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 20px auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+.cake-base {
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    border-radius: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.frosting {
+    width: 70px;
+    height: 25px;
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    border-radius: 12px;
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.decoration {
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c00);
+    border-radius: 10px;
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.decoration::before {
+    content: '🍒';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+}
+
+/* Chocolate Cake Specific */
+.chocolate-cake .cake-base {
+    background: linear-gradient(135deg, #654321, #8b4513);
+}
+
+.chocolate-cake .frosting {
+    background: linear-gradient(135deg, #d2691e, #a0522d);
+}
+
+.chocolate-cake .decoration {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+}
+
+/* Vanilla Cake */
+.vanilla-cake .cake-base {
+    background: linear-gradient(135deg, #f5deb3, #deb887);
+}
+
+.vanilla-cake .frosting {
+    background: linear-gradient(135deg, #fff8dc, #f0e68c);
+}
+
+.vanilla-cake .decoration {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+}
+
+/* Lemon Cake */
+.lemon-cake .cake-base {
+    background: linear-gradient(135deg, #fffacd, #f0e68c);
+}
+
+.lemon-cake .frosting {
+    background: linear-gradient(135deg, #ffff99, #ffff00);
+}
+
+.lemon-cake .decoration {
+    background: linear-gradient(135deg, #32cd32, #228b22);
+}
+
+/* Red Velvet Cake */
+.velvet-cake .cake-base {
+    background: linear-gradient(135deg, #dc143c, #b22222);
+}
+
+.velvet-cake .frosting {
+    background: linear-gradient(135deg, #fff8dc, #f5deb3);
+}
+
+.velvet-cake .decoration {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+}
+
+/* Chocolate Items */
+.chocolate-item {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #8b4513, #d2691e);
+    border-radius: 50%;
+    position: relative;
+    margin: 20px auto;
+    animation: rotate 4s linear infinite;
+}
+
+.chocolate-item::before {
+    content: '🍫';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+/* Pastry Items */
+.pastry-item {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #f5deb3, #deb887);
+    border-radius: 50% 20% 50% 20%;
+    position: relative;
+    margin: 20px auto;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.pastry-item::before {
+    content: '🥐';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+/* Custom Order Items */
+.custom-item {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border-radius: 20px;
+    position: relative;
+    margin: 20px auto;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.custom-item::before {
+    content: '✨';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Enhanced Menu Item Hover Effects */
+.menu-item:hover .cake-visual {
+    animation: float 1s ease-in-out infinite;
+}
+
+.menu-item:hover .chocolate-item {
+    animation: rotate 2s linear infinite;
+}
+
+.menu-item:hover .pastry-item {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.menu-item:hover .custom-item {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cake-visual {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .cake-base {
+        width: 60px;
+        height: 30px;
+    }
+    
+    .frosting {
+        width: 50px;
+        height: 20px;
+    }
+    
+    .decoration {
+        width: 40px;
+        height: 15px;
+    }
+    
+    .chocolate-item,
+    .pastry-item,
+    .custom-item {
+        width: 60px;
+        height: 60px;
+    }
+}

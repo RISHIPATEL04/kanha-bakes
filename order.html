@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Kanha Cakes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">Kanha Cakes</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="order.html" class="nav-link active">Order</a>
+                <div id="authSection"></div>
+            </div>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+        </div>
+    </nav>
+
+    <main class="order-page" style="padding-top: 100px; min-height: 100vh; background: #f8fafc;">
+        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+            <h1 style="text-align: center; color: #1f2937; margin-bottom: 2rem; font-family: 'Playfair Display', serif;">Place Your Order</h1>
+
+            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 2rem;">
+                <form id="cleanOrderForm">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cName" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Your Name *</label>
+                        <input type="text" id="cName" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cPhone" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Phone Number *</label>
+                        <input type="tel" id="cPhone" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cEmail" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Email (Optional)</label>
+                        <input type="email" id="cEmail" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cDate" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Event Date *</label>
+                        <input type="date" id="cDate" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cType" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Cake Flavor *</label>
+                        <select id="cType" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;">
+                            <option value="">Choose Flavor</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Vanilla">Vanilla</option>
+                            <option value="Red Velvet">Red Velvet</option>
+                            <option value="Custom">Other (Specify in notes)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cWeight" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Weight *</label>
+                        <select id="cWeight" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;">
+                            <option value="">Choose Weight</option>
+                            <option value="500g">500g</option>
+                            <option value="1kg">1 kg</option>
+                            <option value="1.5kg">1.5 kg</option>
+                            <option value="2kg+">2 kg+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="cNotes" style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Special Notes</label>
+                        <textarea id="cNotes" rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px;"></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 2rem; display: flex; align-items: center; gap: 10px;">
+                         <input type="checkbox" id="cTerms" required style="transform: scale(1.2);">
+                         <label for="cTerms" style="font-size: 0.9rem; color: #4b5563;">I agree to pickup the order at the bakery and pay the 50% deposit.</label>
+                    </div>
+
+                    <button type="submit" id="masterSubmitBtn" style="width: 100%; background: #ff8c00; color: white; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer;">
+                        Place Order Now
+                    </button>
+                </form>
+
+                <div id="statusMessage" style="margin-top: 1.5rem; text-align: center; font-weight: 500; color: #10b981; display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Force a unique version number to obliterate cache totally -->
+    <script src="config.js"></script>
+    <script src="client-auth.js?v=99"></script>
+    <script src="navigation.js?v=99"></script>
+    <script src="order.js?v=99"></script>
+</body>
+</html>
