@@ -226,11 +226,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             tr.innerHTML = `
                 <td><img src="${product.image}" alt="${product.name}" class="product-img-thumbnail" onerror="this.src='https://via.placeholder.com/60?text=No+Img'"></td>
                 <td><strong>${product.name}</strong></td>
-                <td>${product.category || 'N/A'}</td>
-                <td>$${parseFloat(product.price || 0).toFixed(2)}</td>
+                <td><span class="category-badge">${product.category || 'N/A'}</span></td>
+                <td><strong class="price-tag">₹${parseFloat(product.price || 0).toFixed(2)}</strong></td>
                 <td>
-                    <button class="action-btn" onclick="window.editProduct('${product.id}')" style="margin-right: 0.5rem; background: #3b82f6;">Edit</button>
-                    <button class="action-btn delete-btn" onclick="window.deleteProduct('${product.id}')">Delete</button>
+                    <button class="action-btn edit-btn" onclick="window.editProduct('${product.id}')">✏️ Edit</button>
+                    <button class="action-btn delete-btn" onclick="window.deleteProduct('${product.id}')">🗑️ Delete</button>
                 </td>
             `;
             productsTableBody.appendChild(tr);
