@@ -143,6 +143,16 @@ app.patch('/api/products/:id', requireAdmin, async (req, res) => {
     }
 });
 
+// DELETE /api/products/:id  (admin only)
+app.delete('/api/products/:id', requireAdmin, async (req, res) => {
+    try {
+        const result = await products.delete(req.params.id);
+        res.json(result);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 // ── Order Routes ──────────────────────────────────────────────
 
 // GET /api/orders  (my orders)

@@ -1,5 +1,5 @@
 const db = require('./db');
-const { collection, addDoc, getDocs, doc, getDoc, updateDoc, query, where } = require('firebase/firestore');
+const { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc, query, where } = require('firebase/firestore');
 
 const products = {
     async getAll(category = null) {
@@ -34,6 +34,11 @@ const products = {
         await updateDoc(productRef, data);
         const snapshot = await getDoc(productRef);
         return snapshot.exists() ? { id: snapshot.id, ...snapshot.data() } : null;
+    },
+    async delete(id) {
+        const productRef = doc(db, 'products', id);
+        await deleteDoc(productRef);
+        return { success: true, id };
     }
 };
 

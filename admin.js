@@ -11,7 +11,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     const emptyMessage = document.getElementById('emptyMessage');
     const exportBtn = document.getElementById('exportCsvBtn');
     
+    // Product & Tabs DOM elements
+    const productsTableBody = document.getElementById('productsTableBody');
+    const productsLoading = document.getElementById('productsLoadingMessage');
+    const productsEmpty = document.getElementById('productsEmptyMessage');
+    const productModal = document.getElementById('productModal');
+    const addProductBtn = document.getElementById('addProductBtn');
+    const productForm = document.getElementById('productForm');
+    const modalTitle = document.getElementById('modalTitle');
+    
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // State
     let allOrders = [];
+    let allProducts = [];
+
+    // Tab switching logic
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.add('hidden'));
+            
+            btn.classList.add('active');
+            const target = document.getElementById(btn.dataset.target);
+            if (target) {
+                target.classList.remove('hidden');
+                // Ensure proper display formatting by resetting it 
+                target.style.display = ''; 
+            }
+        });
+    });
 
     // Fetch Orders
     async function loadOrders() {
@@ -164,5 +194,132 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // ==========================================
+    // Product Functions
+    // ==========================================
+    
+    async function loadProducts() {
+        try {
+            productsLoading.classList.remove('hidden');
+            const res = await fetch(`${API_BASE_URL}/api/products`);
+            if (!res.ok) throw new Error('Failed to fetch products');
+            allProducts = await res.json();
+            renderProductsTable();
+        } catch (err) {
+            console.error(err);
+            productsLoading.textContent = 'Error loading products.';
+        }
+    }
+
+    function renderProductsTable() {
+        productsLoading.classList.add('hidden');
+        if (allProducts.length === 0) {
+            productsEmpty.classList.remove('hidden');
+            productsTableBody.innerHTML = '';
+            return;
+        }
+        
+        productsEmpty.classList.add('hidden');
+        productsTableBody.innerHTML = '';
+        allProducts.forEach(product => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><img src="${product.image}" alt="${product.name}" class="product-img-thumbnail" onerror="this.src='https://via.placeholder.com/60?text=No+Img'"></td>
+                <td><strong>${product.name}</strong></td>
+                <td>${product.category || 'N/A'}</td>
+                <td>$${parseFloat(product.price || 0).toFixed(2)}</td>
+                <td>
+                    <button class="action-btn" onclick="window.editProduct('${product.id}')" style="margin-right: 0.5rem; background: #3b82f6;">Edit</button>
+                    <button class="action-btn delete-btn" onclick="window.deleteProduct('${product.id}')">Delete</button>
+                </td>
+            `;
+            productsTableBody.appendChild(tr);
+        });
+    }
+
+    // Open Add Modal
+    if (addProductBtn) {
+        addProductBtn.addEventListener('click', () => {
+            productForm.reset();
+            document.getElementById('productId').value = '';
+            modalTitle.textContent = 'Add New Cake';
+            productModal.classList.remove('hidden');
+        });
+    }
+
+    // Close Modal
+    document.querySelectorAll('.close-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            productModal.classList.add('hidden');
+        });
+    });
+
+    // Open Edit Modal
+    window.editProduct = (id) => {
+        const product = allProducts.find(p => p.id === id);
+        if (!product) return;
+        document.getElementById('productId').value = product.id;
+        document.getElementById('productName').value = product.name || '';
+        document.getElementById('productCategory').value = product.category || 'Cakes';
+        document.getElementById('productPrice').value = product.price || '';
+        document.getElementById('productImage').value = product.image || '';
+        document.getElementById('productDescription').value = product.description || '';
+        modalTitle.textContent = 'Edit Cake Option';
+        productModal.classList.remove('hidden');
+    };
+
+    // Save Product
+    if (productForm) {
+        productForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('productId').value;
+            const method = id ? 'PATCH' : 'POST';
+            const url = id ? `${API_BASE_URL}/api/products/${id}` : `${API_BASE_URL}/api/products`;
+            
+            const payload = {
+                name: document.getElementById('productName').value.trim(),
+                category: document.getElementById('productCategory').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                image: document.getElementById('productImage').value.trim(),
+                description: document.getElementById('productDescription').value.trim()
+            };
+
+            try {
+                const token = localStorage.getItem('session_token');
+                const res = await fetch(url, {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error('Failed to save product');
+                productModal.classList.add('hidden');
+                loadProducts(); 
+            } catch (err) {
+                alert('Error saving product! Check connection and admin privileges.');
+            }
+        });
+    }
+
+    // Delete Product
+    window.deleteProduct = async (id) => {
+        if (!confirm('Are you certain you want to delete this cake? This cannot be undone.')) return;
+        try {
+            const token = localStorage.getItem('session_token');
+            const res = await fetch(`${API_BASE_URL}/api/products/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error('Failed to delete product');
+            loadProducts();
+        } catch (err) {
+            alert('Error deleting product');
+        }
+    };
+    
+    // Initial calls
     loadOrders();
+    loadProducts();
 });
