@@ -1,3 +1,4 @@
+// POST /api/auth/login
 // ============================================================
 //  server.js — Khana Cakes & Chocolates
 //  Express API server (Firebase Version)
@@ -6,7 +7,7 @@
 const express    = require('express');
 const cors       = require('cors');
 const cookieParser = require('cookie-parser');
-const { register, login, logout, verifySession, updateUser, promoteToAdmin, requireAuth, requireAdmin } = require('./auth');
+const { register, login, logout, verifySession, updateUser, promoteToAdmin, promoteUserByEmail, requireAuth, requireAdmin } = require('./auth');
 const { products, orders } = require('./queries');
 
 const app  = express();
@@ -86,6 +87,19 @@ app.get('/api/make-me-admin', requireAuth, async (req, res) => {
     try {
         await promoteToAdmin(req.user.user_id);
         res.send('<h2>Success!</h2><p>Your account is now an Admin.</p><p>Please <a href="/login.html">Logout and Log back in</a> to apply the changes!</p>');
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// POST /api/admin/promote  (admin only)
+app.post('/api/admin/promote', requireAdmin, async (req, res) => {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ error: 'Email is required' });
+    try {
+        const result = await promoteUserByEmail(email);
+        if (!result.success) return res.status(404).json({ error: result.error });
+        res.json({ message: 'User granted admin privileges.' });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }

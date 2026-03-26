@@ -38,6 +38,7 @@
                 <div class="admin-tabs">
                     <button class="tab-btn active" data-target="orders-view">Manage Orders</button>
                     <button class="tab-btn" data-target="products-view">Manage Products</button>
+                    <button class="tab-btn" data-target="admins-view">Manage Admins</button>
                 </div>
             </div>
         </section>
@@ -96,6 +97,24 @@
                 </div>
             </div>
         </section>
+
+        <!-- Admins View -->
+        <section id="admins-view" class="admin-table-section tab-content hidden">
+            <div class="container">
+                <div class="table-card" style="padding: 2rem; max-width: 500px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <h2 style="margin-bottom: 1rem; color: #1a1a1a;">Add New Admin</h2>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Enter the email address of an existing user account to grant them administrative privileges.</p>
+                    <form id="addAdminForm">
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">User Email Address</label>
+                            <input type="email" id="newAdminEmail" placeholder="user@example.com" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;">
+                        </div>
+                        <button type="submit" class="export-btn" style="width: 100%; margin-top: 1.5rem; background: #10b981; padding: 1rem; font-size: 1rem; justify-content: center;">Grant Admin Access</button>
+                    </form>
+                    <div id="adminMessage" style="margin-top: 1rem; font-weight: bold; text-align: center; min-height: 24px;"></div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Product Modal -->
@@ -125,8 +144,12 @@
                     <input type="number" step="0.01" id="productPrice" required>
                 </div>
                 <div class="form-group">
-                    <label>Image URL</label>
-                    <input type="url" id="productImage" required>
+                    <label>Upload Image</label>
+                    <input type="file" id="productImageFile" accept="image/*" style="padding: 0.5rem; border: 1px dashed #ccc; width: 100%; border-radius: 4px; margin-bottom: 0.5rem;">
+                </div>
+                <div class="form-group">
+                    <label>Or Image URL</label>
+                    <input type="text" id="productImage" required>
                 </div>
                 <div class="form-group">
                     <label>Description</label>

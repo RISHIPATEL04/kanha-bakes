@@ -242,6 +242,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         addProductBtn.addEventListener('click', () => {
             productForm.reset();
             document.getElementById('productId').value = '';
+            const fileInput = document.getElementById('productImageFile');
+            if(fileInput) fileInput.value = '';
             modalTitle.textContent = 'Add New Cake';
             productModal.classList.remove('hidden');
         });
@@ -264,9 +266,56 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('productPrice').value = product.price || '';
         document.getElementById('productImage').value = product.image || '';
         document.getElementById('productDescription').value = product.description || '';
+        const fileInput = document.getElementById('productImageFile');
+        if(fileInput) fileInput.value = '';
         modalTitle.textContent = 'Edit Cake Option';
         productModal.classList.remove('hidden');
     };
+
+    // Handle Image Upload conversion
+    const productImageFile = document.getElementById('productImageFile');
+    const productImageInput = document.getElementById('productImage');
+    
+    if (productImageFile && productImageInput) {
+        productImageFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            productImageInput.value = 'Processing image...';
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    let width = img.width;
+                    let height = img.height;
+                    const MAX_SIZE = 800;
+
+                    if (width > height) {
+                        if (width > MAX_SIZE) {
+                            height *= MAX_SIZE / width;
+                            width = MAX_SIZE;
+                        }
+                    } else {
+                        if (height > MAX_SIZE) {
+                            width *= MAX_SIZE / height;
+                            height = MAX_SIZE;
+                        }
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                    productImageInput.value = dataUrl;
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
 
     // Save Product
     if (productForm) {
@@ -319,6 +368,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
     
+    // ==========================================
+    // Admin Management Functions
+    // ==========================================
+    const addAdminForm = document.getElementById('addAdminForm');
+    const adminMessage = document.getElementById('adminMessage');
+
+    if (addAdminForm) {
+        addAdminForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('newAdminEmail').value.trim();
+            adminMessage.style.color = '#666';
+            adminMessage.textContent = 'Processing...';
+            
+            try {
+                const token = localStorage.getItem('session_token');
+                const res = await fetch(`${API_BASE_URL}/api/admin/promote`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await res.json();
+                
+                if (res.ok) {
+                    adminMessage.style.color = '#10b981';
+                    adminMessage.textContent = 'Success! User is now an admin.';
+                    addAdminForm.reset();
+                } else {
+                    adminMessage.style.color = '#ef4444';
+                    adminMessage.textContent = data.error || 'Failed to promote user.';
+                }
+            } catch (err) {
+                adminMessage.style.color = '#ef4444';
+                adminMessage.textContent = 'Network error occurred.';
+            }
+        });
+    }
+
     // Initial calls
     loadOrders();
     loadProducts();

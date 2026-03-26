@@ -162,6 +162,21 @@ async function promoteToAdmin(userId) {
     return true;
 }
 
+/**
+ * Promote a user to admin by email
+ */
+async function promoteUserByEmail(email) {
+    const usersRef = collection(db, 'users');
+    const q = query(usersRef, where('email', '==', email));
+    const snapshot = await getDocs(q);
+    
+    if (snapshot.empty) return { success: false, error: 'User not found.' };
+    
+    const userDoc = snapshot.docs[0];
+    await updateDoc(doc(db, 'users', userDoc.id), { role: 'admin' });
+    return { success: true };
+}
+
 // ── Middleware (Express) ──────────────────────────────────────
 
 /**
@@ -195,4 +210,4 @@ function requireAdmin(req, res, next) {
     });
 }
 
-module.exports = { register, login, verifySession, logout, updateUser, promoteToAdmin, requireAuth, requireAdmin };
+module.exports = { register, login, verifySession, logout, updateUser, promoteToAdmin, promoteUserByEmail, requireAuth, requireAdmin };
